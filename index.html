@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BPM Projektion</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: #010308;
+        overflow: hidden;
+        font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+        color: #dce8f3;
+      }
+
+      .controls {
+        position: fixed;
+        top: 18px;
+        left: 18px;
+        z-index: 10;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+        max-width: min(92vw, 720px);
+        padding: 8px 10px;
+        border: 1px solid rgba(184, 210, 234, 0.16);
+        border-left-color: rgba(184, 210, 234, 0.42);
+        border-radius: 4px;
+        background: rgba(3, 8, 16, 0.58);
+      }
+
+      button {
+        border: 1px solid rgba(205, 226, 245, 0.7);
+        border-radius: 3px;
+        padding: 8px 12px;
+        background: #d2e5f6;
+        color: #07101a;
+        font: inherit;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+      }
+
+      button:hover {
+        background: #f0f7ff;
+      }
+
+      button:focus-visible {
+        outline: 2px solid #8dccff;
+        outline-offset: 2px;
+      }
+
+      button.secondary {
+        background: rgba(204, 224, 242, 0.07);
+        color: #dce8f3;
+        border-color: rgba(184, 210, 234, 0.26);
+      }
+
+      button.secondary:hover {
+        background: rgba(204, 224, 242, 0.16);
+      }
+
+      .status {
+        font-size: 12px;
+        line-height: 1.4;
+        color: rgba(220, 232, 243, 0.92);
+      }
+
+      .hint {
+        font-size: 11px;
+        color: rgba(184, 204, 221, 0.66);
+      }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/addons/p5.sound.min.js"></script>
+    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+    <div class="controls">
+      <button id="connectButton" type="button">Server verbinden</button>
+      <button id="saveButton" class="secondary" type="button">Save PNG</button>
+      <div>
+        <div id="serialStatus" class="status">Server: nicht verbunden</div>
+        <div class="hint">Der Server liest /dev/cu.usbmodem1101. Werte erscheinen, sobald der Sensor ein Signal erkennt.</div>
+      </div>
+    </div>
+    <script src="sketch.js"></script>
+  </body>
+</html>
